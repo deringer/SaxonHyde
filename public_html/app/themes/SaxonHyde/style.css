@@ -1,0 +1,45 @@
+/*
+ * Theme Name:  Saxon Hyde
+ * Description: Saxon Hyde website theme 
+ * Author:      Michael Dyrynda <michael@iatstuti.net>
+ * Author URI:  https://iatstuti.net
+ * Template:    Divi
+ * Version:     1.0.0
+ */
+@import url("../Divi/style.css");
+.et_header_style_centered #page-container {
+  box-shadow: none;
+  margin-bottom: 3em; }
+
+.et_header_style_centered #main-header {
+  background-color: transparent; }
+  .et_header_style_centered #main-header .logo_container {
+    height: 150px;
+    margin: 30px 0; }
+
+.et_header_style_centered #top-menu > li > a {
+  padding-bottom: 1.3em; }
+
+.et_header_style_centered #logo {
+  max-height: 100% !important; }
+
+#home-slider {
+  min-height: 623px; }
+  #home-slider .et_pb_slides .et_pb_slide {
+    min-height: 623px; }
+
+#home-content .et_pb_text {
+  margin: 0 auto;
+  max-width: 75%; }
+
+#home-content h1 {
+  font-size: 3em;
+  line-height: 1.2em;
+  margin-bottom: 0.5em; }
+
+#home-content p {
+  font-size: 1.6em;
+  line-height: 1.3em;
+  margin-bottom: 1.5em; }
+
+/*# sourceMappingURL=style.css.map */
