@@ -1,1 +1,104 @@
-@import url("../Divi/style.css");.et_header_style_centered #page-container{box-shadow:none;margin-bottom:3em}.et_header_style_centered #main-header{background-color:transparent}.et_header_style_centered #main-header .logo_container{height:150px;margin:10px 0 30px}.et_header_style_centered #top-menu>li>a{padding-bottom:1.3em}.et_header_style_centered #logo{max-height:100%!important}#home-slider,#home-slider .et_pb_slides .et_pb_slide{min-height:623px}#home-content .et_pb_text{margin:0 auto;max-width:75%}#home-content h1{font-size:3em;line-height:1.2em;margin-bottom:.5em}#home-content p{font-size:1.6em;line-height:1.3em;margin-bottom:1.5em}.et_pb_section{background-color:#f4ecdc}.et_pb_post_title h1{font-size:3em}.et_pb_post_title h1:after{border:2px solid #d0d0d0;content:'';display:block;margin-left:-20%;margin-top:.2em;width:140%}.et_pb_toggle{border:0 none}.et_pb_toggle_close,.et_pb_toggle_open{background-color:#f4ecdc;padding:20px 0 0}.et_pb_toggle_title{font-size:20px}.et_pb_toggle_close h5.et_pb_toggle_title{color:#d22234!important}.Allotment{margin:2em 0}.Allotment__image{display:block;float:left;text-align:center;width:40%}.Allotment__image img{border:0 none;display:block;margin:0 auto}.Allotment__details{display:block;float:left;line-height:1.4em;width:60%}.Allotment__details sup{bottom:.3em}.Allotment__spacer{border:2px solid #d0d0d0;content:'';display:block;height:2px;margin-bottom:1em;margin-top:2em}
+/*
+ * Theme Name:  Saxon Hyde
+ * Description: Saxon Hyde website theme 
+ * Author:      Michael Dyrynda <michael@iatstuti.net>
+ * Author URI:  https://iatstuti.net
+ * Template:    Divi
+ * Version:     1.0.0
+ */
+@import url("../Divi/style.css");
+.et_header_style_centered #page-container {
+  box-shadow: none;
+  margin-bottom: 3em; }
+
+.et_header_style_centered #main-header {
+  background-color: transparent; }
+  .et_header_style_centered #main-header .logo_container {
+    height: 150px;
+    margin: 10px 0 30px; }
+
+.et_header_style_centered #top-menu > li > a {
+  padding-bottom: 1.3em; }
+
+.et_header_style_centered #logo {
+  max-height: 100% !important; }
+
+#home-slider {
+  min-height: 623px; }
+  #home-slider .et_pb_slides .et_pb_slide {
+    min-height: 623px; }
+
+#home-content .et_pb_text {
+  margin: 0 auto;
+  max-width: 75%; }
+
+#home-content h1 {
+  font-size: 3em;
+  line-height: 1.2em;
+  margin-bottom: 0.5em; }
+
+#home-content p {
+  font-size: 1.6em;
+  line-height: 1.3em;
+  margin-bottom: 1.5em; }
+
+.et_pb_section {
+  background-color: #F4ECDC; }
+
+.et_pb_post_title h1 {
+  font-size: 3em; }
+  .et_pb_post_title h1:after {
+    border: 2px solid #d0d0d0;
+    content: '';
+    display: block;
+    margin-left: -20%;
+    margin-top: 0.2em;
+    width: 140%; }
+
+.et_pb_toggle {
+  border: 0 none; }
+
+.et_pb_toggle_close,
+.et_pb_toggle_open {
+  background-color: #f4ecdc;
+  padding: 20px 0 0 0; }
+
+.et_pb_toggle_title {
+  font-size: 20px; }
+
+.et_pb_toggle_close h5.et_pb_toggle_title {
+  color: #d22234 !important; }
+
+.Allotment {
+  margin: 2em 0; }
+
+.Allotment__image {
+  display: block;
+  float: left;
+  text-align: center;
+  width: 40%; }
+  .Allotment__image img {
+    border: 0 none;
+    display: block;
+    margin: 0 auto; }
+
+.Allotment__details {
+  display: block;
+  float: left;
+  line-height: 1.4em;
+  width: 60%; }
+  .Allotment__details sup {
+    bottom: 0.3em; }
+
+.Allotment__spacer {
+  border: 2px solid #d0d0d0;
+  content: '';
+  display: block;
+  height: 2px;
+  margin-bottom: 1em;
+  margin-top: 2em; }
+
+.Allotment__availability--sold {
+  color: #d22234; }
+
+/*# sourceMappingURL=style.css.map */

@@ -12,13 +12,17 @@ add_shortcode('allotment', 'allotmentDisplay');
 function allotmentDisplay($atts)
 {
     $atts = shortcode_atts([
-        'image'        => 'http://placehold.co/210x210',
-        'number'       => null,
-        'area'         => null,
-        'frontage'     => null,
-        'depth'        => null,
-        'availability' => null,
+        'image'     => 'http://placehold.co/210x210',
+        'number'    => null,
+        'area'      => null,
+        'frontage'  => null,
+        'depth'     => null,
+        'available' => true,
     ], $atts);
+
+    $statusClass = (bool) $atts['available'] ? "available" : "sold";
+    $statusText  = (bool) $atts['available'] ? "Available Now" : "Sold or Under Contract";
+    $depth       = ! is_null($atts['depth']) ? sprintf('<strong>Depth:</strong> %s<br />', $atts['depth']) : null;
 
     return <<<OUTPUT
         <div class="Allotment clearfix">
@@ -28,8 +32,9 @@ function allotmentDisplay($atts)
             <div class="Allotment__details">
                 <strong>Allotment {$atts['number']}</strong><br />
                 <strong>Area:</strong> {$atts['area']}m<sup>2</sup><br />
-                <strong>Frontage:</strong> {$atts['frontage']}m<br />
-                <strong>Availability:</strong> {$atts['availability']}
+                <strong>Frontage:</strong> {$atts['frontage']}<br />
+                {$depth}
+                <strong>Status:</strong> <span class="Allotment__availability--{$statusClass}">{$statusText}</span>
             </div>
         </div>
 
