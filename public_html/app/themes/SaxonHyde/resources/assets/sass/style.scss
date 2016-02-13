@@ -146,3 +146,61 @@
 .Allotment__availability--sold {
     color: #d22234;
 }
+
+#footer-bottom {
+    background-color: #1D1D1B !important;
+
+    .container {
+        margin-bottom: 30px !important;
+        margin-top: 30px !important;
+
+        h1.tagline {
+            color: darken(#F4ECDC, 15%);
+            float: left;
+            font-style: italic;
+            line-height: 120px;
+        }
+
+        span.viney-group {
+            display: block;
+            float: right;
+
+            img {
+                margin: 0 auto;
+                vertical-align: middle;
+            }
+        }
+    }
+}
+
+#register-your-interest {
+    h2.ninja-forms-form-title {
+        color: #d22234;
+        font-style: italic;
+        font-weight: bold;
+    }
+
+    input[type=text],
+    input[type=email] {
+        padding: 8px;
+    }
+
+    input[type=submit] {
+        background-color: transparent;
+        background-image: none;
+        border: 1px solid darken(#F4ECDC, 10%);
+        border-radius: 5px;
+        color: #666;
+        cursor: pointer;
+        font-size: 20px;
+        font-weight: bold;
+        padding: 5px 10px;
+        text-align: center;
+        vertical-align: middle;
+        white-space: nowrap;
+
+        &:hover {
+            background-color: rgba(0, 0, 0, 0.1);
+        }
+    }
+}

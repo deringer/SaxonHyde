@@ -32,6 +32,12 @@ if ( ! is_page_template( 'page-template-blank.php' ) ) : ?>
 				<div id="footer-bottom">
 					<div class="container clearfix">
 
+						<h1 class="tagline">Creating history for the future</h1>
+
+						<span class="viney-group">
+							<img src="<?= get_stylesheet_directory_uri() ?>/images/viney_logo.jpg" alt="Viney Group logo" height="150" width="150" />
+						</span>
+
 					</div>	<!-- .container -->
 				</div>
 			</footer> <!-- #main-footer -->
