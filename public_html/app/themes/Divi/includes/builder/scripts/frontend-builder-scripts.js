@@ -2710,7 +2710,7 @@
 				data:
 				{
 					action : 'et_pb_submit_subscribe_form',
-					et_load_nonce : et_pb_custom.et_load_nonce,
+					et_frontend_nonce : et_pb_custom.et_frontend_nonce,
 					et_list_id : list_id,
 					et_firstname : $firstname.val(),
 					et_lastname : $lastname.val(),

@@ -6,17 +6,17 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 // Early nonce check
 if ( ! isset( $_GET['et_pb_preview_nonce'] ) || ! wp_verify_nonce( $_GET['et_pb_preview_nonce'], 'et_pb_preview_nonce' ) ) {
-	wp_die( __( 'Authentication failed. You cannot preview this item.', 'et_builder' ) );
+	wp_die( esc_html__( 'Authentication failed. You cannot preview this item.', 'et_builder' ) );
 }
 
 // Logged in check
 if ( ! is_user_logged_in() ) {
-	wp_die( __( 'Authentication failed. You are not logged in.', 'et_builder' ) );
+	wp_die( esc_html__( 'Authentication failed. You are not logged in.', 'et_builder' ) );
 }
 
 // Early permission check
 if ( ! current_user_can( 'edit_posts' ) ) {
-	wp_die( __( 'Authentication failed. You have no permission to preview this item.', 'et_builder' ) );
+	wp_die( esc_html__( 'Authentication failed. You have no permission to preview this item.', 'et_builder' ) );
 }
 
 ?><!DOCTYPE html>
@@ -106,11 +106,11 @@ if ( ! current_user_can( 'edit_posts' ) ) {
 					</div> <!-- #content -->
 					<div class="et_pb_modal_overlay link-disabled">
 						<div class="et_pb_prompt_modal">
-							<h3><?php _e( 'Link Disabled', 'et_builder' ); ?></h3>
-							<p><?php _e( 'During preview, link to different page is disabled', 'et_builder' ); ?></p>
+							<h3><?php esc_html_e( 'Link Disabled', 'et_builder' ); ?></h3>
+							<p><?php esc_html_e( 'During preview, link to different page is disabled', 'et_builder' ); ?></p>
 
 							<div class="et_pb_prompt_buttons">
-								<a href="#" class="et_pb_prompt_proceed"><?php _e( 'Close', 'et_builder' ); ?></a>
+								<a href="#" class="et_pb_prompt_proceed"><?php esc_html_e( 'Close', 'et_builder' ); ?></a>
 							</div>
 						</div><!-- .et_pb_prompt_modal -->
 					</div><!-- .et_pb_modal_overlay -->
