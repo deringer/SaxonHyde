@@ -24,8 +24,19 @@
         }
     }
 
+    .nav li ul {
+        width: 280px;
+    }
+
     #top-menu {
+        text-transform: uppercase;
+
+        li li a {
+            width: 245px;
+        }
+
         > li {
+
             > a {
                 padding-bottom: 1.3em;
             }
@@ -71,18 +82,30 @@
 }
 
 .et_pb_post_title {
-    h1 {
-        font-size: 3em;
+    .et_pb_title_container {
+        width: 100%;
 
-        &:after {
-            border: 2px solid #d0d0d0;
-            content: '';
-            display: block;
-            margin-left: -20%;
-            margin-top: 0.2em;
-            width: 140%;
+        h1 {
+            color: #717171;
+            font-size: 1.4em;
+            font-weight: bold;
+            padding-bottom: 0.8em;
+            text-transform: uppercase;
         }
     }
+}
+
+#page-title {
+    p {
+        display: none;
+    }
+}
+
+hr {
+    background: url('./images/hr.png');
+    border: 0 none;
+    height: 8px;
+    width: 100%;
 }
 
 .et_pb_toggle {
