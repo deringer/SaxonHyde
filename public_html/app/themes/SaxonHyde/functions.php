@@ -78,4 +78,3 @@ add_filter('tiny_mce_before_init', 'saxonhyde_mce_before_init');
 add_filter('mce_css', 'saxonhyde_mcekit_editor_style');
 
 remove_filter('the_content', 'wpautop');
-add_filter('the_content', 'nl2br');
