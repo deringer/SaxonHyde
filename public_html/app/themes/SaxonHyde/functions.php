@@ -41,3 +41,38 @@ function allotmentDisplay($atts)
         <div class="Allotment__spacer">&nbsp;</div>
 OUTPUT;
 }
+
+function saxonhyde_mce_editor_buttons($buttons) {
+    array_unshift($buttons, 'styleselect');
+
+    return $buttons;
+}
+
+function saxonhyde_mce_before_init($init_array) {
+    $style_formats = [
+        [
+            'title'   => 'Allotment Sold',
+            'inline'  => 'span',
+            'classes' => 'Allotment__availability--sold',
+        ],
+    ];
+
+    $init_array['style_formats'] = json_encode($style_formats);
+
+    return $init_array;
+
+}
+
+function saxonhyde_mcekit_editor_style($url) {
+    if (! empty($url)) {
+        $url .= ',';
+    }
+
+    $url .= trailingslashit(plugin_dir_url(__FILE__)) . '/editor-styles.css';
+
+    return $url;
+}
+
+add_filter('mce_buttons_2', 'saxonhyde_mce_editor_buttons');
+add_filter('tiny_mce_before_init', 'saxonhyde_mce_before_init');
+add_filter('mce_css', 'saxonhyde_mcekit_editor_style');
