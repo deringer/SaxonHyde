@@ -86,6 +86,8 @@ hr {
 
 .Allotment {
   margin: 2em 0; }
+  .Allotment hr {
+    background: none; }
 
 .Allotment__image {
   display: block;
