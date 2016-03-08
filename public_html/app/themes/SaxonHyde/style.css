@@ -90,20 +90,14 @@ hr {
     background: none; }
 
 .Allotment__image {
-  display: block;
-  float: left;
-  text-align: center;
-  width: 40%; }
+  text-align: center; }
   .Allotment__image img {
     border: 0 none;
     display: block;
     margin: 0 auto; }
 
 .Allotment__details {
-  display: block;
-  float: left;
-  line-height: 1.4em;
-  width: 60%; }
+  line-height: 1.4em; }
   .Allotment__details p {
     display: block; }
   .Allotment__details sup {
