@@ -104,6 +104,8 @@ hr {
   float: left;
   line-height: 1.4em;
   width: 60%; }
+  .Allotment__details p {
+    display: block; }
   .Allotment__details sup {
     bottom: 0.3em; }
 
