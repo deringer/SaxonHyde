@@ -1,10 +1,10 @@
 @font-face {
 	font-family: 'etbuilder';
-	src:url('../../includes/builder/fonts/etbuilder_v2_6.eot');
-	src:url('../../includes/builder/fonts/etbuilder_v2_6.eot?#iefix') format('embedded-opentype'),
-		url('../../includes/builder/fonts/etbuilder_v2_6.woff') format('woff'),
-		url('../../includes/builder/fonts/etbuilder_v2_6.ttf') format('truetype'),
-		url('../../includes/builder/fonts/etbuilder_v2_6.svg#etbuilder') format('svg');
+	src:url('../../includes/builder/fonts/etbuilder_v2_7.eot');
+	src:url('../../includes/builder/fonts/etbuilder_v2_7.eot?#iefix') format('embedded-opentype'),
+		url('../../includes/builder/fonts/etbuilder_v2_7.woff') format('woff'),
+		url('../../includes/builder/fonts/etbuilder_v2_7.ttf') format('truetype'),
+		url('../../includes/builder/fonts/etbuilder_v2_7.svg#etbuilder') format('svg');
 	font-weight: normal;
 	font-style: normal;
 }
@@ -146,7 +146,7 @@ h1#epanel-title {
 	line-height: 18px;
 	margin-bottom: 0px;
 	position: relative;
-	padding-left: 45px;
+	padding-left: 11px;
 }
 
 #epanel-title:before {
@@ -158,25 +158,33 @@ h1#epanel-title {
 	line-height: 1;
 	-webkit-font-smoothing: antialiased;
 	content: "<";
-	display: block;
+	display: none;
 	position: absolute;
 	left: 0;
 	top: -6px;
 	font-size: 32px;
 }
 
+.toplevel_page_et_extra_options h1#epanel-title, .toplevel_page_et_divi_options h1#epanel-title {
+	padding-left: 45px;
+}
+
+.toplevel_page_et_extra_options #epanel-title:before, .toplevel_page_et_divi_options #epanel-title:before {
+	display: block;
+}
+
 /**
  * Reset Buttons
  */
 #epanel-header .defaults-button {
-	width: 96px;
+	width: 60px;
 	height: 58px;
 	padding: 0;
 	text-align: center;
 	line-height: 58px;
 	position: absolute;
 	bottom: -58px;
-	right: 0;
+	right: 20px;
 	z-index: 50;
 	color: white;
 	background-color: #7e3bd0;
@@ -191,11 +199,10 @@ h1#epanel-title {
 	box-shadow: none;
 }
 
-#epanel-header .defaults-button:before {
+#epanel-header .defaults-button.epanel-reset:before {
 	font-family: 'etbuilder';
 	content: '\4d';
 	font-size: 16px;
-	opacity: 0.9;
 	-webkit-font-smoothing: antialiased;
 }
 
@@ -270,14 +277,17 @@ h1#epanel-title {
 	color: #8E969E;
 	display: block;
 	clear: both;
+	letter-spacing: 0.05em;
 	position: relative;
 	padding: 20px;
-	font-size: 14px;
-	font-weight: 700;
+	font-size: 16px;
+	font-weight: 600;
 	transition: all 0.3s;
 	-webkit-transition: all 0.3s;
-	text-transform: uppercase;
-	letter-spacing: 0.5px;
+}
+
+#ui-id-9 {
+	padding-right: 27px;
 }
 
 #epanel-content ul.idTabs a:hover {
@@ -359,8 +369,8 @@ h1#epanel-title {
 	top: 11px;
 	right: 0;
 	opacity: 0;
-	width: 17px;
-	height: 17px;
+	width: 18px;
+	height: 18px;
 	color: #32373C;
 	content: '';
 	text-align: center;
@@ -386,8 +396,7 @@ h1#epanel-title {
 	word-wrap: break-word;
 	display: block;
 	font-weight: 600;
-	font-size: 14px;
-	text-transform: uppercase;
+	font-size: 16px;
 }
 
 #epanel-content .epanel-box .box-title {
@@ -680,8 +689,6 @@ input.checkbox.yes_no_button {
 	overflow: auto;
 	min-height: 340px;
 	position: fixed;
-	top: 35% !important;
-	bottom: 35%;
 	left: 50%;
 	width: 400px;
 	background: rgb(255, 255, 255);
@@ -698,6 +705,8 @@ input.checkbox.yes_no_button {
 	border-radius: 4px; -moz-border-radius: 4px;
 	-webkit-border-radius: 4px;
 	overflow: hidden;
+	font-size: 14px;
+	line-height: 1.5em;
 }
 
 .defaults-hover.active {
@@ -724,7 +733,7 @@ input.checkbox.yes_no_button {
 	bottom: 0;
 	display: block;
 	color: white;
-	font-size: 17px;
+	font-size: 18px;
 	height: 68px;
 	width: 50%;
 	border: none;
@@ -793,8 +802,7 @@ input.checkbox.yes_no_button {
 }
 
 .box-desc-content h3 {
-	text-transform: uppercase;
-	font-size: 14px;
+	font-size: 16px;
 	line-height: 25px;
 	margin: 0px 0px 15px;
 	width: 320px;
@@ -803,6 +811,7 @@ input.checkbox.yes_no_button {
 
 .box-desc-content p {
 	margin: 0px;
+	font-size: 14px;
 }
 
 .box-desc-content .lightboxclose {
@@ -861,8 +870,10 @@ input.checkbox.yes_no_button {
 	background-color: #32373C;
 	padding: 0 20px;
 	margin: 0;
-	font-size: 14px;
+	font-size: 12px;
 	line-height: 40px;
+	text-transform: uppercase;
+	font-weight: 600;
 	height: 40px;
 	margin-right: 0;
 	margin-left: 7px;
@@ -1014,13 +1025,13 @@ input.checkbox.yes_no_button {
 }
 
 #epanel p.postinfo-author img {
-    vertical-align: middle;
-    width: 63px;
-    height: 19px;
-    background: transparent url(../images/postinfo-author.gif) no-repeat;
-    margin-right: 5px;
-    margin-top: -1px;
-    margin-left: 0px !important;
+	vertical-align: middle;
+	width: 63px;
+	height: 19px;
+	background: transparent url(../images/postinfo-author.gif) no-repeat;
+	margin-right: 5px;
+	margin-top: -1px;
+	margin-left: 0px !important;
 }
 
 #epanel p.postinfo-date .mark:before {
@@ -1028,12 +1039,12 @@ input.checkbox.yes_no_button {
 }
 
 #epanel p.postinfo-categories img {
-    vertical-align: middle;
-    width: 91px;
-    height: 19px;
-    background: transparent url(../images/postinfo-categories.gif) no-repeat;
-    margin-right: 5px;
-    margin-left: 0px !important;
+	vertical-align: middle;
+	width: 91px;
+	height: 19px;
+	background: transparent url(../images/postinfo-categories.gif) no-repeat;
+	margin-right: 5px;
+	margin-left: 0px !important;
 }
 
 #epanel p.postinfo-categories .mark:before {
@@ -1041,12 +1052,12 @@ input.checkbox.yes_no_button {
 }
 
 #epanel p.postinfo-date img {
-    vertical-align: middle;
-    width: 55px;
-    height: 19px;
-    background: transparent url(../images/postinfo-date.gif) no-repeat;
-    margin-right: 5px;
-    margin-left: 0px !important;
+	vertical-align: middle;
+	width: 55px;
+	height: 19px;
+	background: transparent url(../images/postinfo-date.gif) no-repeat;
+	margin-right: 5px;
+	margin-left: 0px !important;
 }
 
 #epanel p.postinfo-comments .mark:before {
@@ -1282,7 +1293,23 @@ left: 0px;
 #colorpickerHolder2 .colorpicker_submit { background-image: url(../images/custom_submit.png); }
 #colorpickerHolder2 .colorpicker input { color: #778398; }
 
+/* wp color picker option */
+.box-content .et_pb_colorpalette_overview { display: block; margin-bottom: 10px; }
+.box-content .colorpalette-item { display: inline-block; width: 32px; height: 32px; -moz-box-shadow: inset 0 0 5px 0 rgba(0, 0, 0, 0.2); -webkit-box-shadow: inset 0 0 5px 0 rgba(0, 0, 0, 0.2); box-shadow: inset 0 0 5px 0 rgba(0, 0, 0, 0.2); margin-right: 8px; content: ''; -moz-border-radius: 4px; -webkit-border-radius: 4px; border-radius: 4px; cursor: pointer; }
+.box-content .wp-color-result { display: none; }
+.box-content .iris-picker { display: block !important; }
+.box-content .colorpalette-item:last-child { margin-right: 0; }
+.box-content .colorpalette-colorpicker { display: none; }
+.box-content .colorpalette-colorpicker.active { display: block; }
+.box-content .wp-picker-holder { margin-top: 50px; }
+.box-content input.input-colorpalette-colorpicker.wp-color-picker { display: block !important; width: 316px !important; }
+
 .clearfix { clear: both; }
+
+/* Portability Integration */
+#epanel-header .epanel-portability {
+	right: 80px;
+}
 
 /**
  * Saving Animation
@@ -1476,12 +1503,6 @@ Copyright (c) 2015 Daniel Eden
 
 	#epanel-content .epanel-box .upload_image_button {
 		margin-right: 0;
-	}
-}
-
-@media only screen and ( max-width: 1045px ) {
-	#epanel-header .defaults-button {
-		width: 58px;
 	}
 }
 

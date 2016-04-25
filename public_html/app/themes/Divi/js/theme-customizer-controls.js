@@ -9,7 +9,12 @@
 			this.options = jQuery.extend({}, this.defaults, options);
 
 			this.create_dropdown();
-		}
+		},
+		$iframe_preview = 'old' === et_divi_customizer_data.is_old_wp ? $( '#customize-preview' ) : $( '.wp-full-overlay' ),
+		all_device_classes = 'old' === et_divi_customizer_data.is_old_wp ? 'et_divi_phone et_divi_tablet' : 'preview-tablet preview-mobile preview-desktop',
+		tablet_class = 'old' === et_divi_customizer_data.is_old_wp ? 'et_divi_tablet' : 'preview-tablet';
+		phone_class = 'old' === et_divi_customizer_data.is_old_wp ? 'et_divi_phone' : 'preview-mobile';
+		desktop_class = 'old' === et_divi_customizer_data.is_old_wp ? '' : 'preview-desktop';
 
 		if ( typeof window.location.search !== 'undefined' && window.location.search.search( 'et_customizer_option_set=module' ) !== -1 ) {
 			$( 'body' ).addClass( 'et_modules_customizer_option_set' );
@@ -157,20 +162,27 @@
 		});
 
 		$( '#accordion-section-et_divi_mobile_tablet h3, #accordion-panel-et_divi_mobile h3' ).click( function () {
-			var $iframe_preview = $( '#customize-preview' );
-				$iframe_preview.removeClass( 'et_divi_phone et_divi_tablet' );
-				$iframe_preview.addClass( 'et_divi_tablet' );
+			$iframe_preview.removeClass( all_device_classes ).addClass( tablet_class );
+
+			if ( 'old' !== et_divi_customizer_data.is_old_wp ) {
+				$( '#customize-footer-actions .devices' ).css( { display: 'none' } );
+			}
 		});
 
 		$( '#accordion-section-et_divi_mobile_phone h3, #accordion-section-et_divi_mobile_menu h3' ).click( function () {
-			var $iframe_preview = $( '#customize-preview' );
-				$iframe_preview.removeClass( 'et_divi_phone et_divi_tablet' );
-				$iframe_preview.addClass( 'et_divi_phone' );
+			$iframe_preview.removeClass( all_device_classes ).addClass( phone_class );
+
+			if ( 'old' !== et_divi_customizer_data.is_old_wp ) {
+				$( '#customize-footer-actions .devices' ).css( { display: 'none' } );
+			}
 		});
 
 		$( '.control-panel-back, .customize-panel-back' ).click( function () {
-			var $iframe_preview = $( '#customize-preview' );
-				$iframe_preview.removeClass( 'et_divi_phone et_divi_tablet' );
+			$iframe_preview.removeClass( all_device_classes ).addClass( desktop_class );
+
+			if ( 'old' !== et_divi_customizer_data.is_old_wp ) {
+				$( '#customize-footer-actions .devices' ).css( { display: 'block' } );
+			}
 		});
 
 		$( 'input[type=range]' ).on( 'mousedown', function() {
