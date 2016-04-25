@@ -1,0 +1,227 @@
+/*
+ * Theme Name:  Saxon Hyde
+ * Description: Saxon Hyde website theme 
+ * Author:      Michael Dyrynda <michael@iatstuti.net>
+ * Author URI:  https://iatstuti.net
+ * Template:    Divi
+ * Version:     1.0.0
+ */
+
+@import url("../Divi/style.css");
+
+.et_header_style_centered {
+    #page-container {
+        box-shadow: none;
+        margin-bottom: 3em;
+    }
+
+    #main-header {
+        background-color: transparent;
+
+        .logo_container {
+            height: 150px;
+            margin: 10px 0 30px;
+        }
+    }
+
+    .nav li ul {
+        width: 280px;
+    }
+
+    #top-menu {
+        text-transform: uppercase;
+
+        li li a {
+            width: 245px;
+        }
+
+        > li {
+
+            > a {
+                padding-bottom: 1.3em;
+            }
+        }
+    }
+
+    #logo {
+        max-height: 100% !important;
+    }
+}
+
+#home-slider {
+    min-height: 623px;
+
+    .et_pb_slides {
+        .et_pb_slide {
+            min-height: 623px;
+        }
+    }
+}
+
+#home-content {
+    .et_pb_text {
+        margin: 0 auto;
+        max-width: 75%;
+    }
+
+    h1 {
+        font-size: 3em;
+        line-height: 1.2em;
+        margin-bottom: 0.5em;
+    }
+
+    p {
+        font-size: 1.6em;
+        line-height: 1.3em;
+        margin-bottom: 1.5em;
+    }
+}
+
+.et_pb_section {
+    background-color: #F4ECDC;
+}
+
+.et_pb_post_title {
+    .et_pb_title_container {
+        width: 100%;
+
+        h1 {
+            color: #717171;
+            font-size: 1.4em;
+            font-weight: bold;
+            padding-bottom: 0.8em;
+            text-transform: uppercase;
+        }
+    }
+}
+
+#page-title {
+    p {
+        display: none;
+    }
+}
+
+hr {
+    background: url('./images/hr.png');
+    border: 0 none;
+    height: 8px;
+    width: 100%;
+}
+
+.et_pb_toggle {
+    border: 0 none;
+}
+
+.et_pb_toggle_close,
+.et_pb_toggle_open {
+    background-color: #f4ecdc;
+    padding: 20px 0 0 0;
+}
+
+.et_pb_toggle_title {
+    font-size: 20px;
+}
+
+.et_pb_toggle_close {
+    h5.et_pb_toggle_title {
+        color: #d22234 !important;
+    }
+}
+
+.Allotment {
+    border-bottom: 2px solid #d0d0d0;
+    margin: 2em 0;
+}
+
+.Allotment__image {
+    text-align: center;
+
+    img {
+        border: 0 none;
+        display: block;
+        margin: 0 auto;
+    }
+}
+
+.Allotment__details {
+    line-height: 1.4em;
+
+    p {
+        display: block;
+    }
+
+    sup {
+        bottom: 0.3em;
+    }
+}
+
+.Allotment__spacer {
+    border: 2px solid #d0d0d0;
+    content: '';
+    display: block;
+    height: 2px;
+    margin-bottom: 1em;
+    margin-top: 2em;
+}
+
+.Allotment__availability--sold {
+    color: #d22234;
+}
+
+#footer-bottom {
+    background-color: #1D1D1B !important;
+
+    .container {
+        margin-bottom: 30px !important;
+        margin-top: 30px !important;
+
+        h1.tagline {
+            color: darken(#F4ECDC, 15%);
+            float: left;
+            font-style: italic;
+            line-height: 120px;
+        }
+
+        span.viney-group {
+            display: block;
+            float: right;
+
+            img {
+                margin: 0 auto;
+                vertical-align: middle;
+            }
+        }
+    }
+}
+
+#register-your-interest {
+    h2.ninja-forms-form-title {
+        color: #d22234;
+        font-style: italic;
+        font-weight: bold;
+    }
+
+    input[type=text],
+    input[type=email] {
+        padding: 8px;
+    }
+
+    input[type=submit] {
+        background-color: transparent;
+        background-image: none;
+        border: 1px solid darken(#F4ECDC, 10%);
+        border-radius: 5px;
+        color: #666;
+        cursor: pointer;
+        font-size: 20px;
+        font-weight: bold;
+        padding: 5px 10px;
+        text-align: center;
+        vertical-align: middle;
+        white-space: nowrap;
+
+        &:hover {
+            background-color: rgba(0, 0, 0, 0.1);
+        }
+    }
+}
