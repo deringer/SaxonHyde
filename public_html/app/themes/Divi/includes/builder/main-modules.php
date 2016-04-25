@@ -2565,7 +2565,7 @@ class ET_Builder_Module_Slider extends ET_Builder_Module {
 			'bottom_padding_tablet' => array(
 				'type' => 'skip',
 			),
-			'bottom_padding_tablet' => array(
+			'bottom_padding_phone' => array(
 				'type' => 'skip',
 			),
 			'disabled_on' => array(
@@ -2838,6 +2838,10 @@ class ET_Builder_Module_Slider_Item extends ET_Builder_Module {
 			'slide_title' => array(
 				'label'    => esc_html__( 'Slide Title', 'et_builder' ),
 				'selector' => '.et_pb_slide_description h2',
+			),
+			'slide_container' => array(
+				'label'    => esc_html__( 'Slide Description Container', 'et_builder' ),
+				'selector' => '.et_pb_container',
 			),
 			'slide_description' => array(
 				'label'    => esc_html__( 'Slide Description', 'et_builder' ),
@@ -3127,7 +3131,7 @@ class ET_Builder_Module_Slider_Item extends ET_Builder_Module {
 					%1$s
 				</div>',
 				do_shortcode( sprintf( '
-					<video loop="loop" autoplay="autoplay"%3$s%4$s>
+					<video loop="loop" %3$s%4$s>
 						%1$s
 						%2$s
 					</video>',
@@ -4315,11 +4319,11 @@ class ET_Builder_Module_Testimonial extends ET_Builder_Module {
 			),
 			'testimonial_author' => array(
 				'label'    => esc_html__( 'Testimonial Author', 'et_builder' ),
-				'selector' => 'et_pb_testimonial_author',
+				'selector' => '.et_pb_testimonial_author',
 			),
 			'testimonial_meta' => array(
 				'label'    => esc_html__( 'Testimonial Meta', 'et_builder' ),
-				'selector' => '.et_pb_testimonial p:last-of-type',
+				'selector' => '.et_pb_testimonial_meta',
 			),
 		);
 	}
@@ -5131,6 +5135,7 @@ class ET_Builder_Module_Pricing_Tables_Item extends ET_Builder_Module {
 			'button_url',
 			'button_text',
 			'content_new',
+			'pricing_item_excluded_color',
 		);
 
 		$this->fields_defaults = array(
@@ -5333,6 +5338,13 @@ class ET_Builder_Module_Pricing_Tables_Item extends ET_Builder_Module {
 					esc_html__( 'Excluded option', 'et_builder' )
 				),
 			),
+			'pricing_item_excluded_color' => array(
+				'label'             => esc_html__( 'Excluded Item Color', 'et_builder' ),
+				'type'              => 'color-alpha',
+				'custom_color'      => true,
+				'tab_slug'          => 'advanced',
+				'priority'          => 22,
+			),
 		);
 		return $fields;
 	}
@@ -5350,6 +5362,7 @@ class ET_Builder_Module_Pricing_Tables_Item extends ET_Builder_Module {
 		$button_text   = $this->shortcode_atts['button_text'];
 		$button_custom = $this->shortcode_atts['custom_button'];
 		$custom_icon   = $this->shortcode_atts['button_icon'];
+		$pricing_item_excluded_color = $this->shortcode_atts['pricing_item_excluded_color'];
 
 		$et_pb_pricing_tables_num++;
 
@@ -5357,6 +5370,16 @@ class ET_Builder_Module_Pricing_Tables_Item extends ET_Builder_Module {
 
 		$custom_table_icon = 'on' === $button_custom && '' !== $custom_icon ? $custom_icon : $et_pb_pricing_tables_icon;
 
+		if ( '' !== $pricing_item_excluded_color ) {
+			ET_Builder_Element::set_style( $function_name, array(
+				'selector'    => '%%order_class%% ul.et_pb_pricing li.et_pb_not_available',
+				'declaration' => sprintf(
+					'color: %1$s !important;',
+					esc_html( $pricing_item_excluded_color )
+				),
+			) );
+		}
+ 
 		if ( '' !== $button_url && '' !== $button_text ) {
 			$button_text = sprintf( '<a class="et_pb_pricing_table_button et_pb_button%4$s" href="%1$s"%3$s>%2$s</a>',
 				esc_url( $button_url ),
@@ -9275,7 +9298,11 @@ class ET_Builder_Module_Contact_Form extends ET_Builder_Module {
 				'label'           => esc_html__( 'Email', 'et_builder' ),
 				'type'            => 'text',
 				'option_category' => 'basic_option',
-				'description'     => esc_html__( 'Input the email address where messages should be sent.', 'et_builder' ),
+				'description'     => et_get_safe_localization( sprintf(
+					__( 'Input the email address where messages should be sent.<br /><br /> Note: email delivery and spam prevention are complex processes. We recommend using a delivery service such as <a href="%1$s">Mandrill</a>, <a href="%2$s">SendGrid</a>, or other similar service to ensure the deliverability of messages that are submitted through this form', 'et_builder' ),
+					'http://mandrill.com/',
+					'https://sendgrid.com/'
+				) ),
 			),
 			'title' => array(
 				'label'           => esc_html__( 'Title', 'et_builder' ),
@@ -9517,8 +9544,8 @@ class ET_Builder_Module_Contact_Form extends ET_Builder_Module {
 				}
 			}
 
-			$headers[] = "From: \"{$contact_name}\" <{$contact_email}>";
-			$headers[] = "Reply-To: <{$contact_email}>";
+			$headers[] = "From: \"{$contact_name}\" <mail@{$_SERVER['HTTP_HOST']}>";
+			$headers[] = "Reply-To: \"{$contact_name}\" <{$contact_email}>";
 
 			wp_mail( apply_filters( 'et_contact_page_email_to', $et_email_to ),
 				et_get_safe_localization( sprintf(
@@ -14358,7 +14385,7 @@ class ET_Builder_Module_Fullwidth_Header extends ET_Builder_Module {
 				( $title ? sprintf( '<h1>%1$s</h1>', $title ) : '' ),
 				( $subhead ? sprintf( '<span class="et_pb_fullwidth_header_subhead">%1$s</span>', $subhead ) : '' ),
 				$logo_image,
-				( '' !== $content ? sprintf( '<p>%1$s</p>', $this->shortcode_content ) : '' ),
+				$this->shortcode_content,
 				( '' !== $button_output ? $button_output : '' ),
 				( '' !== $content_orientation ? sprintf( ' %1$s', $content_orientation ) : '' )
 			);
@@ -15590,9 +15617,9 @@ class ET_Builder_Module_Fullwidth_Portfolio extends ET_Builder_Module {
 
 					if ( '' !== $thumb_src ) : ?>
 						<div class="et_pb_portfolio_image <?php echo esc_attr( $orientation ); ?>">
-							<a href="<?php esc_url( the_permalink() ); ?>">
-								<img src="<?php echo esc_url( $thumb_src ); ?>" alt="<?php echo esc_attr( get_the_title() ); ?>"/>
-								<div class="meta">
+							<img src="<?php echo esc_url( $thumb_src ); ?>" alt="<?php echo esc_attr( get_the_title() ); ?>"/>
+							<div class="meta">
+								<a href="<?php esc_url( the_permalink() ); ?>">
 								<?php
 									$data_icon = '' !== $hover_icon
 										? sprintf(
@@ -15613,8 +15640,8 @@ class ET_Builder_Module_Fullwidth_Portfolio extends ET_Builder_Module {
 									<?php if ( 'on' === $show_date ) : ?>
 										<p class="post-meta"><?php echo get_the_date(); ?></p>
 									<?php endif; ?>
-								</div>
-							</a>
+								</a>
+							</div>
 						</div>
 				<?php endif; ?>
 				</div>

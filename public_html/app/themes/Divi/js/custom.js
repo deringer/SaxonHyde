@@ -703,7 +703,7 @@
 			}
 		} );
 
-		$( 'a[href*=#]:not([href=#])' ).click( function() {
+		$( 'a[href*="#"]:not([href="#"])' ).click( function() {
 			var $this_link = $( this ),
 				has_closest_smooth_scroll_disabled = $this_link.closest( '.et_smooth_scroll_disabled' ).length,
 				has_closest_woocommerce_tabs = ( $this_link.closest( '.woocommerce-tabs' ).length && $this_link.closest( '.tabs' ).length ),
@@ -810,11 +810,15 @@
 		$( '#et_top_search' ).click( function() {
 			var $search_container = $( '.et_search_form_container' );
 
-			$( '.et_menu_container' ).removeClass( 'et_pb_menu_visible' ).removeClass( 'et_pb_no_animation' ).addClass('et_pb_menu_hidden');
-			$search_container.removeClass( 'et_pb_search_form_hidden' ).removeClass( 'et_pb_no_animation' ).addClass('et_pb_search_visible');
+			if ( $search_container.hasClass('et_pb_is_animating') ) {
+				return;
+			}
+
+			$( '.et_menu_container' ).removeClass( 'et_pb_menu_visible et_pb_no_animation' ).addClass('et_pb_menu_hidden');
+			$search_container.removeClass( 'et_pb_search_form_hidden et_pb_no_animation' ).addClass('et_pb_search_visible et_pb_is_animating');
 			setTimeout( function() {
 				$( '.et_menu_container' ).addClass( 'et_pb_no_animation' );
-				$search_container.addClass( 'et_pb_no_animation' );
+				$search_container.addClass( 'et_pb_no_animation' ).removeClass('et_pb_is_animating');
 			}, 1000);
 			$search_container.find( 'input' ).focus();
 
@@ -822,11 +826,15 @@
 		});
 
 		function et_hide_search() {
-			$( '.et_menu_container' ).removeClass('et_pb_menu_hidden').removeClass( 'et_pb_no_animation' ).addClass( 'et_pb_menu_visible' );
-			$( '.et_search_form_container' ).removeClass('et_pb_search_visible').removeClass( 'et_pb_no_animation' ).addClass( 'et_pb_search_form_hidden' );
+			if ( $( '.et_search_form_container' ).hasClass('et_pb_is_animating') ) {
+				return;
+			}
+
+			$( '.et_menu_container' ).removeClass( 'et_pb_menu_hidden et_pb_no_animation' ).addClass( 'et_pb_menu_visible' );
+			$( '.et_search_form_container' ).removeClass('et_pb_search_visible et_pb_no_animation' ).addClass( 'et_pb_search_form_hidden et_pb_is_animating' );
 			setTimeout( function() {
 				$( '.et_menu_container' ).addClass( 'et_pb_no_animation' );
-				$( '.et_search_form_container' ).addClass( 'et_pb_no_animation' );
+				$( '.et_search_form_container' ).addClass( 'et_pb_no_animation' ).removeClass('et_pb_is_animating');
 			}, 1000);
 		}
 
@@ -903,7 +911,11 @@
 		}
 
 		if ( $('#logo').length ) {
-			et_define_logo_dimension();
+			// Wait until logo is loaded before performing logo dimension fix
+			// This comes handy when the page is heavy due to the use of images or other assets
+			$('#logo').attr( 'src', $('#logo').attr('src') ).load( function(){
+				et_define_logo_dimension();
+			} );
 		}
 
 		// Set width for adsense in footer widget

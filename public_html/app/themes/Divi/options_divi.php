@@ -1,7 +1,7 @@
 <?php
 global $epanelMainTabs, $themename, $shortname, $options;
 
-$epanelMainTabs = array('general','navigation','layout','ad','seo','integration','support');
+$epanelMainTabs = array('general','navigation','layout','ad','seo','integration','support','updates');
 
 $cats_array = get_categories('hide_empty=0');
 $pages_array = get_pages('hide_empty=0');
@@ -70,6 +70,14 @@ $options = array (
 				   "type" => "checkbox",
 				   "std" => "off",
 				   "desc" => esc_html__("Enable this if you want to replace the WordPress default gallery with the Divi-style gallery.",$themename)
+			),
+
+			array( "name"         => esc_html__( "Color Pickers Default Palette", $themename ),
+				   "id"           => $shortname . "_color_palette",
+				   "type"         => "et_color_palette",
+				   "items_amount" => 8,
+				   "std"          => '#000000|#FFFFFF|#E02B20|#E09900|#EDF000|#7CDA24|#0C71C3|#8300E9',
+				   "desc"         => esc_html__( "Define the default color palette for color pickers in the Divi Builder.", $themename ),
 			),
 
 			array( "type" => "clearfix",),
@@ -275,6 +283,14 @@ $options = array (
 				   "std" => "",
 				   "desc" => esc_html__( "Here you can add custom css to override or extend default styles.", $themename ),
 					"validation_type" => "nohtml"
+			),
+
+			array(
+				"name"          => esc_html__( "Memory Limit Increase", $themename ),
+				"type"          => "callback_function",
+				"desc"          => esc_html__( 'Here you can disable automatic memory limit increase.', $themename ),
+				"function_name" => 'et_reset_memory_limit_increase_setting',
+				"depends_on"    => 'et_should_memory_limit_increase',
 			),
 
 		array( "name" => "general-1",
@@ -805,6 +821,53 @@ $options = array (
 			   "type" => "subcontent-end",),
 
 	array( "name" => "wrap-integration",
+		   "type" => "contenttab-wrapend",),
+
+//-------------------------------------------------------------------------------------//
+
+	array( "name" => "wrap-updates",
+		   "type" => "contenttab-wrapstart",),
+
+		array( "type" => "subnavtab-start",),
+
+			array( "name" => "updates-1",
+				   "type" => "subnav-tab",
+				   "desc" => esc_html__("General",$themename)
+			),
+
+		array( "type" => "subnavtab-end",),
+
+		array( "name" => "updates-1",
+			   "type" => "subcontent-start",),
+
+			array(
+				'name'              => esc_html__( 'Username', $themename ),
+				'id'                => 'et_automatic_updates_options_username',
+				'std'               => '',
+				'type'              => 'password',
+				'validation_type'   => 'nohtml',
+				'desc'              => et_get_safe_localization( __( 'Before you can receive product updates, you must first authenticate your Elegant Themes subscription. To do this, you need to enter both your Elegant Themes Username and your Elegant Themes API Key. Your username is the same username you use when logging in to <a href="http://elegantthemes.com/" target="_blank">ElegantThemes.com</a>', $themename ) ),
+				'is_global'         => true,
+				'main_setting_name' => 'et_automatic_updates_options',
+				'sub_setting_name'  => 'username',
+			),
+
+			array(
+				'name'            => esc_html__( 'API Key', $themename ),
+				'id'              => 'et_automatic_updates_options_api_key',
+				'std'             => '',
+				'type'            => 'password',
+				'validation_type' => 'nohtml',
+				'desc'            => et_get_safe_localization( __( 'Before you can receive product updates, you must first authenticate your Elegant Themes subscription. To do this, you need to enter both your Elegant Themes Username and your Elegant Themes API Key. To locate your API Key, <a href="https://www.elegantthemes.com/members-area/" target="_blank">log in</a> to your Elegant Themes account and navigate to the <strong>Account > API Key</strong> page.', $themename ) ),
+				'is_global'         => true,
+				'main_setting_name' => 'et_automatic_updates_options',
+				'sub_setting_name'  => 'api_key',
+			),
+
+		array( "name" => "updates-1",
+			   "type" => "subcontent-end",),
+
+	array( "name" => "wrap-updates",
 		   "type" => "contenttab-wrapend",),
 
 //-------------------------------------------------------------------------------------//

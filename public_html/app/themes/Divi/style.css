@@ -1,7 +1,7 @@
 /*
 Theme Name: Divi
 Theme URI: http://www.elegantthemes.com/gallery/divi/
-Version: 2.6.4
+Version: 2.7.3
 Description: Smart. Flexible. Beautiful. Divi is the most powerful theme in our collection.
 Author: Elegant Themes
 Author URI: http://www.elegantthemes.com
@@ -2752,7 +2752,7 @@ div.pp_overlay {
 }
 
 #top-menu li.mega-menu li > a {
-	max-width: 240px !important;
+	width: 100%;
 }
 
 #top-menu li.mega-menu.mega-menu-parent li li,
@@ -5757,6 +5757,42 @@ ul.et_pb_side_nav .side_nav_item a.active {
 	}
 }
 
+/* Responsive Styles Tablet Portrait */
+@media all and (max-width: 768px) {
+	/* Shop Module (WooCommerce responsive styling for tablet starts from max-width: 768px ) */
+	/* woocommerce cart */
+	table.cart th,
+	#main-content table.cart th,
+	table.cart td,
+	#main-content table.cart td,
+	table.cart tr,
+	#main-content table.cart tr,
+	.woocommerce-cart #content-area table tr,
+	.woocommerce-cart #content-area table td,
+	.woocommerce-cart #content-area table th {
+		max-width: 100%;
+	}
+
+	table.cart tr,
+	#main-content table.cart tr,
+	#content-area table tr {
+		padding: 0;
+	}
+
+	.woocommerce .cart_item .quantity {
+		width: auto;
+	}
+
+	.woocommerce-cart table.cart td.actions .coupon .input-text {
+		width: 50%;
+		margin-right: 0;
+	}
+
+	.woocommerce-cart table.cart td.actions .button[name="update_cart"] {
+		width: 100%;
+	}
+}
+
 /* Responsive Styles Smartphone Only */
 @media all and (max-width: 767px) {
 	/* Blog + Sidebar Module + Footer */
@@ -5904,23 +5940,6 @@ ul.et_pb_side_nav .side_nav_item a.active {
 	.et_hide_search_icon.et_header_style_fullscreen .et_slide_menu_top .et-search-form {
 		display: none !important;
 	}
-
-/* woocommerce cart */
-	table.cart th,
-	#main-content table.cart th,
-	table.cart td,
-	#main-content table.cart td,
-	table.cart tr,
-	#main-content table.cart tr,
-	.woocommerce-cart #content-area table tr,
-	.woocommerce-cart #content-area table td,
-	.woocommerce-cart #content-area table th {
-		max-width: 100%;
-	}
-
-	.woocommerce .cart_item .quantity {
-		width: auto;
-	}
 }
 
 /* Responsive Styles Smartphone Portrait */
@@ -5957,6 +5976,15 @@ ul.et_pb_side_nav .side_nav_item a.active {
 	table.cart tr,
 	#content table.cart tr {
 		padding: 0.857em 0.287em !important;
+	}
+
+	.woocommerce-cart table.cart td.actions .coupon .input-text {
+		margin-bottom: 10px;
+	}
+
+	.woocommerce-cart table.cart td.actions .coupon .input-text,
+	.woocommerce-cart table.cart td.actions .button {
+		width: 100%;
 	}
 }
 
@@ -6239,7 +6267,8 @@ p.et_pb_gallery_caption {
 }
 
 .et_pb_image.et_pb_has_overlay a.et_pb_lightbox_image {
-	display: inline-block;
+	display: block;
+	overflow: hidden;
 	position: relative;
 }
 
@@ -7757,7 +7786,7 @@ body.chrome.parallax-map-support .et_pb_map {
 .et_overlay {
 	display: block;
 	position: absolute;
-	z-index: 3;
+	z-index: -1;
 	top: 0;
 	left: 0;
 	-webkit-box-sizing: border-box;
@@ -7801,6 +7830,7 @@ body.chrome.parallax-map-support .et_pb_map {
 .et_pb_fullwidth_portfolio .et_pb_portfolio_image:hover .meta,
 .et_pb_gallery_image:hover .et_overlay,
 .et_pb_has_overlay:hover .et_overlay {
+	z-index: 3;
 	opacity: 1;
 }
 
@@ -8644,6 +8674,15 @@ a.et_pb_more_button:after,
 .et_mobile_menu li a:hover {
 	opacity: 0.7;
 	background-color: rgba(0, 0, 0, 0.03);
+}
+
+/* Dropdown adjustment */
+.et-dropdown-removing > ul {
+	display: none;
+}
+
+.mega-menu .et-dropdown-removing > ul {
+	display: block;
 }
 
 /* Dropdown Arrows */
@@ -10267,7 +10306,7 @@ body.ie .et_pb_divider {
 
 .et_pb_fullwidth_portfolio .et_pb_portfolio_image .meta {
 	position: absolute;
-	z-index: 4;
+	z-index: -1;
 	top: 0;
 	left: 0;
 	-webkit-box-sizing: border-box;
@@ -15214,29 +15253,29 @@ span.comment_date {
 	}
 
 /* Comments Module */
-	.et_pb_comments_module #comment-wrap li.comment article {
+	#comment-wrap li.comment article {
 		padding-right: 0;
 	}
 
-	.et_pb_comments_module .comment-body {
+	.comment-body {
 		padding: 0 0 0 100px;
 	}
 
-	.et_pb_comments_module .comment-reply-link {
+	.comment-reply-link {
 		float: right;
 		position: relative !important;
 		top: auto !important;
 		bottom: -10px;
 	}
 
-	.et_pb_comments_module #commentform input[type="text"] {
+	#commentform input[type="text"] {
 		-webkit-box-sizing: border-box;
 		-moz-box-sizing: border-box;
 		box-sizing: border-box;
 		width: 100%;
 	}
 
-	.et_pb_comments_module .comment .children {
+	.comment .children {
 		margin-left: 50px;
 	}
 }
@@ -15484,16 +15523,24 @@ span.comment_date {
 	}
 
 /* Comments Module */
-	.et_pb_comments_module .comment_avatar img {
+	.comment_avatar img {
 		max-width: 50%;
 	}
 
-	.et_pb_comments_module .comment-body {
+	.comment-body {
 		padding: 0 0 0 50px;
 	}
 
-	.et_pb_comments_module .comment .children {
+	.comment .children {
 		margin-left: 25px;
+	}
+
+	a.comment-reply-link.et_pb_button {
+		font-size: 15px;
+	}
+
+	a.comment-reply-link.et_pb_button:after {
+		font-size: 25px;
 	}
 
 /* Post Slider Module */
